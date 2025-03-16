@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<h1>
+    ML BASED Candidate Screening
+</h1>
+<form action="/" method="post" id="info_collection">
+    <index for="type_of_prediction">What do you want to predict? AI Score or Recruiter's Decision?</index>&emsp;
+    <Select type="text" name="type_of_prediction" id="type_of_prediction">
+        <option value="AI Score">AI Score</option>
+        <option value="Recruiter Decision">Recruiter's Decision</option>
+    </Select>
+    <br>
+    <index for="Experience">Enter your Experience in Years</index>&emsp;
+    <input type="number" id="Experience" name="Experience in Years" placeholder="Enter your Experience in Years">
+    <br>
+    <index for="projects">Enter the number of projects</index>&emsp;
+    <input type="number" id='projects' name="No of projects" placeholder="Enter your number of projects">
+    <br> 
+    <br> 
+
+    &emsp;&emsp;&emsp;&emsp;<button type="Submit" id="submit-btn">Do the processing </button>
+</form>
+<p>{{error}}</p>
