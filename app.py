@@ -3,8 +3,13 @@ import pickle
 from flask import Flask,render_template,url_for,request,redirect
 import pymongo as pym
 
+file=open('mongodb_url.txt')
+url=file.readlines()[0]
 
 app=Flask(__name__)
+client=pym.MongoClient(url)
+db=client.Resume_Screening
+Model_results=db.Model_Results
 
 buffer={'Experience':None,'Projects':None,'Type of Processing':None}
 
@@ -41,6 +46,7 @@ def processing():
         classifier=pickle.load(open('Models/Classifier.sav','rb'))
         prediction=classifier.predict([input_to_model])[0]
         result=f'The predicted Recruiter decision is {prediction}'
+    Model_results.insert_one({'Years of Experience':experience,'Number of Projects':projects,'Result':result})
     return render_template('result.html',prediction=result)   
 
 
