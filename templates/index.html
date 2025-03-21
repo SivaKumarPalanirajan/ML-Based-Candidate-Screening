@@ -1,7 +1,33 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background: linear-gradient(135deg,#0face0,#e06d0f);
+            min-height: 100px;
+
+        }
+        h1{
+            text-align: center;
+            text-decoration: solid;
+        }
+        #container {
+            background-color: rgb(19, 170, 229);
+            padding: 30px;
+            text-align: center;
+    }
+    </style>
+</head>
+<body>
+
 <h1>
     ML Based Candidate Screening
 </h1>
+<div id=container>
 <form action="/" method="post" id="info_collection">
     <index for="type_of_prediction">What do you want to predict? AI Score or Recruiter's Decision?</index>&emsp;
     <Select type="text" name="type_of_prediction" id="type_of_prediction">
@@ -9,14 +35,17 @@
         <option value="Recruiter Decision">Recruiter's Decision</option>
     </Select>
     <br>
-    <index for="Experience">Enter your Experience in Years</index>&emsp;
+    <index for="Experience">Enter your Experience in Years:</index>&emsp;
     <input type="number" id="Experience" name="Experience in Years" placeholder="Enter your Experience in Years">
     <br>
-    <index for="projects">Enter the number of projects</index>&emsp;
+    <index for="projects">Enter the number of projects:</index>&emsp;
     <input type="number" id='projects' name="No of projects" placeholder="Enter your number of projects">
     <br> 
     <br> 
 
     &emsp;&emsp;&emsp;&emsp;<button type="Submit" id="submit-btn">Do the processing </button>
 </form>
+</div>
 <p>{{error}}</p>
+</body>
+</html>
