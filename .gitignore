@@ -1,2 +1,4 @@
 .venv
 mongodb_url.txt
+/Dataset
+/Models
