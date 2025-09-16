@@ -1,0 +1,18 @@
+preprocess:
+  input_path: Dataset/raw/AI_Resume_Screening.csv
+  train_data_path: Dataset/preprocessed/train.csv 
+  test_data_path: Dataset/preprocessed/test.csv
+  preprocessor_path: Models/preprocessor.pkl 
+
+train:
+  train_data_path: Dataset/preprocessed/train.csv 
+  classifier_model_path: Models/C_model.pkl 
+  classifier_HPs: {'C':[2,4,5]}
+  regressor_model_path: Models/R_model.pkl 
+
+evaluate:
+  test_data_path: Dataset/preprocessed/test.csv
+  preprocessor_path: Models/preprocessor.pkl 
+  regressor_model_path: Models/R_model.pkl 
+  classifier_model_path: Models/C_model.pkl 
+

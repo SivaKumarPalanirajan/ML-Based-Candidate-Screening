@@ -10,3 +10,5 @@ dagshub
 dvc
 mlflow
 dvc-s3
+python-dotenv
+optuna
