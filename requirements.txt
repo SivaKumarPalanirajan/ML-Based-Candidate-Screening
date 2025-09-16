@@ -4,3 +4,9 @@ scikit-learn
 scipy
 seaborn 
 matplotlib 
+flask
+pymongo
+dagshub
+dvc
+mlflow
+dvc-s3
