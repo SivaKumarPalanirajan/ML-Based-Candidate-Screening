@@ -12,7 +12,6 @@ train:
 
 evaluate:
   test_data_path: Dataset/preprocessed/test.csv
-  preprocessor_path: Models/preprocessor.pkl 
   regressor_model_path: Models/R_model.pkl 
   classifier_model_path: Models/C_model.pkl 
 

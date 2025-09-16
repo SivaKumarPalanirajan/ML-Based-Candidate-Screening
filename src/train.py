@@ -151,7 +151,7 @@ def train_classifier(train_data_path:str,classifier_model_path:str,classifier_HP
 if __name__=='__main__':
     params=yaml.safe_load(open('params.yaml'))['train']
 
-    mlflow.set_experiment('Resume-Checker')
+    mlflow.set_experiment('Resume-Checker-Training')
 
     train_data_path=params['train_data_path'] 
     classifier_model_path=params['classifier_model_path'] 
