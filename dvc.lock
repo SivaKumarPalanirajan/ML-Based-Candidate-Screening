@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py Dataset/raw/AI_Resume_Screening.csv 
+      Dataset/preprocessed/train.csv Dataset/preprocessed/test.csv
+    deps:
+    - path: Dataset/raw/AI_Resume_Screening.csv
+      hash: md5
+      md5: 6842f4457c3c0d8d148441d8ff39821e
+      size: 105089
+    - path: src/preprocess.py
+      hash: md5
+      md5: 75e686fc062e1d55cdb4bd214ca5f52a
+      size: 2149
+    outs:
+    - path: Dataset/preprocessed/test.csv
+      hash: md5
+      md5: 0233d330b85202d672b0b596b21df6a1
+      size: 45987
+    - path: Dataset/preprocessed/train.csv
+      hash: md5
+      md5: 805a32806c5d2e07b587ec3a016c8d98
+      size: 182516

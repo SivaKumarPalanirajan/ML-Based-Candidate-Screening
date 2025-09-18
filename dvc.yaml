@@ -1,0 +1,10 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py Dataset/raw/AI_Resume_Screening.csv 
+      Dataset/preprocessed/train.csv Dataset/preprocessed/test.csv
+    deps:
+    - Dataset/raw/AI_Resume_Screening.csv
+    - src/preprocess.py
+    outs:
+    - Dataset/preprocessed/test.csv
+    - Dataset/preprocessed/train.csv
