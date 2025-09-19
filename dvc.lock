@@ -21,3 +21,51 @@ stages:
       hash: md5
       md5: 805a32806c5d2e07b587ec3a016c8d98
       size: 182516
+  train:
+    cmd: python src/train.py Dataset/preprocessed/train.csv Models/C_model.pkl 
+      Models/R_model.pkl train.classifier_HPs
+    deps:
+    - path: Dataset/preprocessed/train.csv
+      hash: md5
+      md5: 805a32806c5d2e07b587ec3a016c8d98
+      size: 182516
+    - path: src/train.py
+      hash: md5
+      md5: 16bf4c0509e3eec0635e5c8a5d30536e
+      size: 6057
+    params:
+      params.yaml:
+        train.classifier_HPs:
+          C:
+          - 2
+          - 4
+          - 5
+    outs:
+    - path: Models/C_model.pkl
+      hash: md5
+      md5: a97e1a6c5733bb83b995be9cfbc75b2c
+      size: 6846
+    - path: Models/R_model.pkl
+      hash: md5
+      md5: 6d3768b74b352b2f1bac5f88b6a33a1a
+      size: 561
+  evaluate:
+    cmd: python src/evaluate.py Dataset/preprocessed/test.csv Models/R_model.pkl
+      Models/C_model.pkl
+    deps:
+    - path: Dataset/preprocessed/test.csv
+      hash: md5
+      md5: 0233d330b85202d672b0b596b21df6a1
+      size: 45987
+    - path: Models/C_model.pkl
+      hash: md5
+      md5: a97e1a6c5733bb83b995be9cfbc75b2c
+      size: 6846
+    - path: Models/R_model.pkl
+      hash: md5
+      md5: 6d3768b74b352b2f1bac5f88b6a33a1a
+      size: 561
+    - path: src/evaluate.py
+      hash: md5
+      md5: da8e9683ebd0c06a107a77966be7f93b
+      size: 2017

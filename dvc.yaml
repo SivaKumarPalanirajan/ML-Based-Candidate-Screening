@@ -8,3 +8,22 @@ stages:
     outs:
     - Dataset/preprocessed/test.csv
     - Dataset/preprocessed/train.csv
+  train:
+    cmd: python src/train.py Dataset/preprocessed/train.csv Models/C_model.pkl 
+      Models/R_model.pkl train.classifier_HPs
+    deps:
+    - Dataset/preprocessed/train.csv
+    - src/train.py
+    params:
+    - train.classifier_HPs
+    outs:
+    - Models/C_model.pkl
+    - Models/R_model.pkl
+  evaluate:
+    cmd: python src/evaluate.py Dataset/preprocessed/test.csv Models/R_model.pkl
+      Models/C_model.pkl
+    deps:
+    - Dataset/preprocessed/test.csv
+    - Models/C_model.pkl
+    - Models/R_model.pkl
+    - src/evaluate.py
