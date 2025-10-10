@@ -1,4 +1,5 @@
 import pandas as pd 
+import numpy as np
 from imblearn.over_sampling import SMOTENC
 from sklearn.model_selection import train_test_split 
 import yaml 
@@ -12,12 +13,13 @@ def preprocess(input_path,train_data_path,test_data_path,preprocessor_path):
     print('Dropped duplicates if found')
 
     # fix null values
-    data['Certifications']=data['Certifications'].fillna(data['Certifications'].mode()[0])
+    data['Certifications']=data['Certifications'].fillna('None')
     print('Checked and filled null values if found')
 
     # remove outliers
-    max_limit=data['AI Score (0-100)'].mean()+3*data['AI Score (0-100)']
-    min_limit=data['AI Score (0-100)'].mean()-3*data['AI Score (0-100)']
+    data['AI Score (0-100)']=np.log(1/data['AI Score (0-100)'])
+    max_limit=data['AI Score (0-100)'].mean()+3*data['AI Score (0-100)'].std()
+    min_limit=data['AI Score (0-100)'].mean()-3*data['AI Score (0-100)'].std()
 
     data=data[(data['AI Score (0-100)']<max_limit) & (data['AI Score (0-100)']>min_limit)]
 

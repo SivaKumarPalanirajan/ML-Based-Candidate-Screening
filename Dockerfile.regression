@@ -1,0 +1,7 @@
+FROM python:3.9-slim 
+WORKDIR /app 
+COPY regression_inferencing.py .
+COPY requirements.txt .
+COPY Models/ .
+RUN pip install -r requirements.txt 
+cmd ["python","regression_inferencing.py"]

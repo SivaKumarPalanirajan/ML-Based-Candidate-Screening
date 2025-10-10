@@ -1,0 +1,44 @@
+version: "3.9"
+
+services: 
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"  
+
+  regression: 
+    image: sivakumarpalanirajan/resume_screening_regression_service:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.regression
+    ports: 
+     - "5000:5000"
+  
+  classification:
+    image: sivakumarpalanirajan/resume_screening_classification_service:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.classification
+    ports: 
+      - "8080:5000"
+  
+  central_app:
+    image: sivakumarpalanirajan/resume_screening_central_app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.central_app
+    environment:
+      MONGO_URI: mongodb://mongodb:27017
+    ports: 
+      - "8000:5000"
+    depends_on:
+      - classification
+      - regression
+      - mongodb
+
+volumes:
+  mongo_data: 

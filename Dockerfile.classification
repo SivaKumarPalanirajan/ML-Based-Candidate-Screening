@@ -1,0 +1,7 @@
+FROM python:3.9-slim 
+WORKDIR /app 
+COPY requirements.txt .
+COPY classification_inferencing.py .
+COPY Models/C_model.pkl .
+RUN pip install -r requirements.txt 
+CMD ["python","classification_inferencing.py"]
